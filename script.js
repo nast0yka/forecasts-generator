@@ -24,20 +24,22 @@ function generatePrediction() {
 }
 
 const currentForecast = document.querySelector('.current-forecast');
-const forecastContainer = document.querySelector('.forecast-item');
+const forecastContainer = document.querySelector('.forecasts');
 
 let button = document.querySelector('.forecast-btn');
 
 button.addEventListener('click', function() {
-    let a = currentForecast.querySelector('h1').textContent = generatePrediction();
-    let b = currentForecast.querySelector('p').textContent = `Вероятность ${generate(0, 100)} %`;
+    let a = generatePrediction()
+    currentForecast.querySelector('h1').textContent = a;
+    let b = `Вероятность ${generate(0, 100)} %`;
+    currentForecast.querySelector('p').textContent = b;
 
-    function creataNewForecast(a, b) {
+    function createNewForecast(a, b) {
         const template = document.querySelector("#forecast-item");
         const newForeCast = template.content.cloneNode(true);
         newForeCast.querySelector('h3').textContent = a;
         newForeCast.querySelector('p').textContent = b;
         forecastContainer.append(newForeCast);
     }
-    creataNewForecast(a, b);
+    createNewForecast(a, b);
 });
